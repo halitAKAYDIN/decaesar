@@ -2,7 +2,8 @@
 
 leg=$@
 
-function decaesar() {
+if [[ $@ != "" ]]; then
+    function decaesar() {
     local value
     local cipher
     value=({a..z})
@@ -15,3 +16,7 @@ function decaesar() {
 for i in {1..26}; do
     printf "\e[32m$(decaesar "$@" $i) \033[0m \n\033[0;35m"; seq -s- ${#leg}|tr -d '[:digit:]'
 done
+else
+    echo 'Enter a value !
+    Example: caesar "iMuBlzeo"'
+fi
